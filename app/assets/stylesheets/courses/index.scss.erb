@@ -1,3 +1,45 @@
 .courses-container {
   background: #F2F2F2;
 }
+
+.search_form {
+  margin: auto;
+  margin-top: 150px;
+  width: fit-content;
+}
+
+.search_button {
+  background: #3cba54;
+  outline: none;
+  display: inline-block;
+  border-radius: 0px;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  border: 1px solid #d5d5d5;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('<%= asset_path('searchicon.png') %>') ;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  width: 500px;
+  display: inline-block;
+  box-shadow: 0 5px 30px rgba(156, 160, 171, 0.25);
+}
+
+input::placeholder {
+  font-size: 14px;
+}
+
+.form {
+  display: inline-block;
+  width: 510px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form_display {
+}
