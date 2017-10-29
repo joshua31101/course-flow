@@ -1,24 +1,3 @@
 # CourseFlow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+We decided to build CourseFlow when we realized a widespread, yet largely unaddressed problem, amongst Georgia Tech college students. Every semester, student populations wade through course requirements, attempting to figure out the perfect times to take classes. They completely scrap and redesign schedules because of unclear and conflicting course requirements. As a result, we built CourseFlow, a web application that allows students to quickly type in a course number and see a diagram of which prerequisites must be taken before this course. It also displays the order in which these prerequisites must be taken. We developed a clean tree graph to display this information and bring together the entire user experience.
