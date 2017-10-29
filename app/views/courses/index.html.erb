@@ -27,7 +27,6 @@
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
   d3.select(self.frameElement).style("height", "800px");
   function update(source) {
     // Compute the new tree layout.
@@ -43,22 +42,22 @@
         .attr("class", "node")
         .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
         .on("click", click);
-    nodeEnter.append("circle")
-        .attr("r", 1e-6)
-        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+    nodeEnter.append('foreignObject')
+        .attr("width", 100)
+        .attr("height", 40)
+        .attr("x", "-0.5em")
+        .attr("y", "-1.35em")
+        .style("background", "white");
     nodeEnter.append("text")
-        .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+        .attr("x", "4.75em")
         .attr("dy", ".35em")
         .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-        .text(function(d) { return d.name + " " + d.desc; })
+        .text(function(d) { return d.name; })
         .style("fill-opacity", 1e-6);
     // Transition nodes to their new position.
     var nodeUpdate = node.transition()
         .duration(duration)
         .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-    nodeUpdate.select("circle")
-        .attr("r", 4.5)
-        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
     nodeUpdate.select("text")
         .style("fill-opacity", 1);
     // Transition exiting nodes to the parent's new position.
@@ -109,7 +108,6 @@
     }
     update(d);
   }
-
   function validateInput(input) {
     if (input === '' || input.split.length == 1) {
       return false;
@@ -142,7 +140,6 @@
       $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 1100</p>');
     }
   }
-
   $(document).ready(function() {
     $('#course_input').keypress(function (e) {
      var key = e.which;
@@ -152,8 +149,6 @@
        return false;
       }
     });
-
-
     $('.search_form button').click(function(ev) {
       ev.preventDefault();
       makeGraph()
