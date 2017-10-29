@@ -10,6 +10,7 @@
 </div>
 
 
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
   var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -139,7 +140,12 @@
 
   function makeGraph() {
     $('.error').remove();
+    // Hide svg when making a graph
+    svg.style('visibility', 'hidden');
+
     if (validateInput($('#course_input').val())) {
+      // Add spinner
+      $('.courses-container').append('<div class="spinner"></div>');
       d3.json('prereq_courses?' + $('form').serialize(), function(error, flare) {
         if (error) {
           $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 1100</p>');
@@ -156,6 +162,10 @@
           }
         }
         root.children.forEach(collapse);
+        // Remove spinner before displaying trees
+        $('.courses-container .spinner').remove();
+        // Make svg visible again
+        svg.style('visibility', 'visible');
         update(root);
       });
     } else {
