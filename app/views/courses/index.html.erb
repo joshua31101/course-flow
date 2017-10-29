@@ -1,7 +1,7 @@
 <div>
   <h1 class="title">Course<span class="title2">Flow</span></h1>
   <div class="search_form">
-    <form class = "form">
+    <form class="form">
       <img src="<%= asset_path('searchicon.png') %>" class="search_icon">
       <input type="text" name="search" placeholder="Search majors or course numbers">
     </form>
@@ -27,7 +27,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-d3.json("sample_json.json", function(error, flare) {
+d3.json("prereq_courses.json", function(error, flare) {
   if (error) throw error;
   root = flare;
   root.x0 = height / 2;
@@ -64,7 +64,7 @@ function update(source) {
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.name; })
+      .text(function(d) { return d.name + " " + d.desc; })
       .style("fill-opacity", 1e-6);
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
