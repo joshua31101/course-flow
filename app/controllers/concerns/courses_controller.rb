@@ -1,9 +1,15 @@
 class CoursesController < ApplicationController
+  # GET
+  # URL: /
+  # Landing page with a search input bar
   def index
   end
 
-  def prereq_courses
-    render json: get_user_course_prereqs('CS 1332')
+  # GET
+  # URL: /prereq_courses?course_name=
+  # Find prerequisite courses from the course_name passed in from search input bar
+  def search_prereq_courses
+    render json: get_user_course_prereqs(params[:course_name]), status: :ok
   end
 
   private
