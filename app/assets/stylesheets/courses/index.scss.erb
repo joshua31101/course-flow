@@ -60,8 +60,11 @@ input[type=text]#course_input {
   transition: width 0.4s ease-in-out;
   width: 500px;
   display: inline-block;
-  box-shadow: 0 5px 30px rgba(244, 194, 13, 0.25);
   height: inherit;
+}
+
+input[type=text]#course_input:focus {
+  box-shadow: 0 5px 30px rgba(244, 194, 13, 0.25);
 }
 
 input::placeholder {

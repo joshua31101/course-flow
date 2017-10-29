@@ -3,7 +3,7 @@
   <div class="search_form">
     <form class="form">
       <img src="<%= asset_path('searchicon.png') %>" class="search_icon">
-      <input id="course_input" class="form-control" type="text" name="course_name" placeholder="Search majors or course numbers">
+      <input id="course_input" class="form-control" type="text" name="course_name" placeholder="Search course numbers">
     </form>
     <button type="button" class="btn btn-raised btn-success search_button">Search</button>
   </div>
@@ -64,7 +64,9 @@
         })
         .attr("y", ".35em")
         .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-        .text(function(d) { return d.name; })
+        .text(function(d) {
+          return (d.children || d._children).length > 0 ? d.name + " *" : d.name;
+        })
     // Course title
     nodeEnter.append("text")
         .attr("x", function(d) {
@@ -148,7 +150,7 @@
       $('.courses-container').append('<div class="spinner"></div>');
       d3.json('prereq_courses?' + $('form').serialize(), function(error, flare) {
         if (error) {
-          $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 1100</p>');
+          $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
           throw error;
         };
         root = flare;
@@ -169,7 +171,7 @@
         update(root);
       });
     } else {
-      $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 1100</p>');
+      $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
     }
   }
   $(document).ready(function() {

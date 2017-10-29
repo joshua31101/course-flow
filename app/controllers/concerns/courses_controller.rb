@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
       course_number = params[:course_name].split(' ')[1]
       render json: get_user_course_prereqs("#{major} #{course_number}"), status: :ok
     else
-      render json: 'Opps.. we couldn\'t find a course. Try typing something like CS 1100', status: :forbidden
+      render json: 'Opps.. we couldn\'t find a course. Try typing something like CS 3510', status: :forbidden
     end
   end
 
