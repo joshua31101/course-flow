@@ -21,9 +21,13 @@ class CoursesController < ApplicationController
   # @param course_name String - 'major course_number' ex) 'CS 1301'
   # @return course_prereqs Hash - course root parent
   def get_user_course_prereqs(course_name)
+    if course_name.blank?
+      return nil
+    end
+
     course_info = course_name.split(' ')
     major = course_info[0]
-    course_num = course_info[1].to_i
+    course_num = course_info[1]
 
     if major.present? && course_num.present?
       _course_info = JsonHelper.courses[major][course_num]
@@ -36,7 +40,9 @@ class CoursesController < ApplicationController
 
     if JsonHelper.courses[major][course_num] && JsonHelper.courses[major][course_num][:prereq]
       JsonHelper.courses[major][course_num][:prereq].each do |prereq_course|
-        json_prereq_courses[:children] << get_user_course_prereqs(prereq_course)
+        if prereq_course != ' '
+          json_prereq_courses[:children] << get_user_course_prereqs(prereq_course)
+        end
       end
     else
       return json_prereq_courses
