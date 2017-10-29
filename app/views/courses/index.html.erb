@@ -27,8 +27,13 @@
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
   d3.select(self.frameElement).style("height", "800px");
   function update(source) {
+    if (source.children && source.children.length >= 12) {
+      // svg.style('height', 1000)
+      // TODO: dynamically update height of svg
+    }
     // Compute the new tree layout.
     var nodes = tree.nodes(root).reverse(),
         links = tree.links(nodes);
@@ -43,17 +48,34 @@
         .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
         .on("click", click);
     nodeEnter.append('foreignObject')
-        .attr("width", 100)
-        .attr("height", 40)
-        .attr("x", "-0.5em")
-        .attr("y", "-1.35em")
+        .attr("width", function(d) { return d.name.length + 80 })
+        .attr("height", 30)
+        .attr("x", function(d) { return !d.parent ? '-5.5em' : d.name.length > 7 ? "-2em" : "-0.7em" })
+        .attr("y", "-1em")
         .style("background", "white");
+    // Course number
     nodeEnter.append("text")
-        .attr("x", "4.75em")
-        .attr("dy", ".35em")
+        .attr("x", function(d) {
+          if (!d.parent) {
+            return "-0.5em";
+          }
+          return d.children || d._children ? "4em" : "-1.5em";
+        })
+        .attr("y", ".35em")
         .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
         .text(function(d) { return d.name; })
-        .style("fill-opacity", 1e-6);
+    // Course title
+    nodeEnter.append("text")
+        .attr("x", function(d) {
+          if (!d.parent) {
+            return "-8em";
+          }
+          return "-1.5em";
+        })
+        .attr("y", "1.7em")
+        .attr("text-anchor", function(d) { return "start"; })
+        .style("font-size", "14px")
+        .text(function(d) { return d.desc });
     // Transition nodes to their new position.
     var nodeUpdate = node.transition()
         .duration(duration)
@@ -76,7 +98,7 @@
     link.enter().insert("path", "g")
         .attr("class", "link")
         .attr("d", function(d) {
-          var o = {x: source.x0, y: source.y0};
+          var o = {x: source.x0, y: source.y0 };
           return diagonal({source: o, target: o});
         });
     // Transition links to their new position.

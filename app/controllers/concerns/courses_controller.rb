@@ -10,7 +10,9 @@ class CoursesController < ApplicationController
   # Find prerequisite courses from the course_name passed in from search input bar
   def search_prereq_courses
     if params[:course_name].present?
-      render json: get_user_course_prereqs(params[:course_name]), status: :ok
+      major = params[:course_name].split(' ')[0].upcase
+      course_number = params[:course_name].split(' ')[1]
+      render json: get_user_course_prereqs("#{major} #{course_number}"), status: :ok
     else
       render json: 'Opps.. we couldn\'t find a course. Try typing something like CS 1100', status: :forbidden
     end
