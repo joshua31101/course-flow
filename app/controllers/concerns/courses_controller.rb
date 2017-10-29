@@ -9,7 +9,11 @@ class CoursesController < ApplicationController
   # URL: /prereq_courses?course_name=
   # Find prerequisite courses from the course_name passed in from search input bar
   def search_prereq_courses
-    render json: get_user_course_prereqs(params[:course_name]), status: :ok
+    if params[:course_name].present?
+      render json: get_user_course_prereqs(params[:course_name]), status: :ok
+    else
+      render json: 'Opps.. we couldn\'t find a course. Try typing something like CS 1100', status: :forbidden
+    end
   end
 
   private

@@ -1,4 +1,4 @@
-<div>
+<div class="courses-container">
   <h1 class="title">Course<span class="title2">Flow</span></h1>
   <div class="search_form">
     <form class="form">
@@ -110,22 +110,37 @@
     update(d);
   }
 
+  function validateInput(input) {
+    if (input === '' || input.split.length == 1) {
+      return false;
+    }
+    return true;
+  }
+
   function makeGraph() {
-    d3.json('prereq_courses?' + $('form').serialize(), function(error, flare) {
-      if (error) throw error;
-      root = flare;
-      root.x0 = height / 2;
-      root.y0 = 0;
-      function collapse(d) {
-        if (d.children) {
-          d._children = d.children;
-          d._children.forEach(collapse);
-          d.children = null;
+    $('.error').remove();
+    if (validateInput($('#course_input').val())) {
+      d3.json('prereq_courses?' + $('form').serialize(), function(error, flare) {
+        if (error) {
+          $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 1100</p>');
+          throw error;
+        };
+        root = flare;
+        root.x0 = height / 2;
+        root.y0 = 0;
+        function collapse(d) {
+          if (d.children) {
+            d._children = d.children;
+            d._children.forEach(collapse);
+            d.children = null;
+          }
         }
-      }
-      root.children.forEach(collapse);
-      update(root);
-    });
+        root.children.forEach(collapse);
+        update(root);
+      });
+    } else {
+      $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 1100</p>');
+    }
   }
 
   $(document).ready(function() {
@@ -133,8 +148,8 @@
      var key = e.which;
      // Check if a user hits enter
      if (key == 13) {
-        makeGraph();
-        return false;
+       makeGraph();
+       return false;
       }
     });
 
