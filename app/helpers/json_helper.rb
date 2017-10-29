@@ -1,384 +1,619 @@
 module JsonHelper
-  def self.sample_json
+
+  def self.courses
     {
-     "name": "flare",
-     "children": [
-      {
-       "name": "analytics",
-       "children": [
-        {
-         "name": "cluster",
-         "children": [
-          {"name": "AgglomerativeCluster", "size": 3938},
-          {"name": "CommunityStructure", "size": 3812},
-          {"name": "HierarchicalCluster", "size": 6714},
-          {"name": "MergeEdge", "size": 743}
-         ]
+      'CS' => {
+        1100 => {
+          :course_title=>"Freshman Leap Seminar",
+          :prereq=>[],
+          :openup=>[]
         },
-        {
-         "name": "graph",
-         "children": [
-          {"name": "BetweennessCentrality", "size": 3534},
-          {"name": "LinkDistance", "size": 5731},
-          {"name": "MaxFlowMinCut", "size": 7840},
-          {"name": "ShortestPaths", "size": 5914},
-          {"name": "SpanningTree", "size": 3416}
-         ]
+        1171 => {
+          :course_title=>"Computing in MATLAB",
+          :prereq=>["CS 1301", "CS 15XX", "CS 13X1", "CS 1315"],
+          :openup=>["CS 1372"]
         },
-        {
-         "name": "optimization",
-         "children": [
-          {"name": "AspectRatioBanker", "size": 7074}
-         ]
+        1301 => {
+          :course_title=>"Introduction to Computing",
+          :prereq=>[],
+          :openup=>["CS 1171", "CS 1316", "CS 1331", "CS 2316", "CS 2600", "CS 3101", "CS 4400", "CS 4475", "CX 4010", "CX 4240"]
+        },
+        1315 => {
+          :course_title=>"Intro Media Computation",
+          :prereq=>[],
+          :openup=>["CS 1171", "CS 1316", "CS 1331", "CS 2316", "CS 2600", "CS 3101", "CS 4400", "CS 4475"]
+        },
+        1316 => {
+          :course_title=>"Rep Structure & Behavior",
+          :prereq=>["CS 1301", "CS 1315", "CS 1371"],
+          :openup=>["CS 2340"]
+        },
+        1331 => {
+          :course_title=>"Intro to Object Oriented Prog",
+          :prereq=>["CS 1301", "CS 1315", "CS 1321", "CS 1371"],
+          :openup=>["CS 1332", "CS 2110", "CS 2261", "CS 2340", "CS 4464", "CS 4616", "CS 4625", "CS 4641", "CX 4140", "CX 4220", "CX 4230", "CX 4232", "CX 4236", "CX 4242"]
+        },
+        1332 => {
+          :course_title=>"Data Structures & Algorithms",
+          :prereq=>["CS 1331", "CS 1322"],
+          :openup=>["CS 2335", "CS 3451", "CS 3510", "CS 3511", "CS 3600", "CS 3630", "CS 4245", "CS 4460", "CS 4649"]
+        },
+        1371 => {
+          :course_title=>"Computing for Engineers",
+          :prereq=>[],
+          :openup=>["CS 1316", "CS 1331", "CS 2316", "CS 2600", "CS 3101", "CS 4400", "CS 4475", "CX 4010", "CX 4240"]
+        },
+        1372 => {
+          :course_title=>"Program Design for Engineers",
+          :prereq=>["CS 1171", "CS 1371", "CS 1301"],
+          :openup=>["CS 2340", "CS 4245", "CX 4140", "CX 4220", "CX 4230", "CX 4232", "CX 4236", "CX 4242"]
+        },
+        2050 => {
+          :course_title=>"Intro Discrete Math CS",
+          :prereq=>[],
+          :openup=>["CS 3510", "CS 3511", "CS 4560"]
+        },
+        2051 => {
+          :course_title=>"Honors Discrete Math CS",
+          :prereq=>[],
+          :openup=>["CS 3510"]
+        },
+        2110 => {
+          :course_title=>"Computer Organiz&Program",
+          :prereq=>["CS 1331"],
+          :openup=>["CS 2200", "CS 2345", "CS 3451", "CS 4476", "CS 4495", "CS 4605"]
+        },
+        2200 => {
+          :course_title=>"Systems and Networks",
+          :prereq=>["CS 2110"],
+          :openup=>["CS 3210", "CS 3220", "CS 3251", "CS 4220", "CS 4235", "CS 4260", "CS 4261", "CS 4290", "CS 4675", "CS 4685"]
+        },
+        2261 => {
+          :course_title=>"Media Device Arch",
+          :prereq=>["CS 1331"],
+          :openup=>["CS 2345", "CS 4476", "CS 4495", "CS 4605"]
+        },
+        2316 => {
+          :course_title=>"Data Input/Manipulation",
+          :prereq=>["CS 1371", "CS 1301", "CS 1315"],
+          :openup=>["CS 4005", "CX 4140", "CX 4220", "CX 4230", "CX 4232", "CX 4236", "CX 4242"]
+        },
+        2335 => {
+          :course_title=>"Software Practicum",
+          :prereq=>["CS 1332"],
+          :openup=>[]
+        },
+        2340 => {
+          :course_title=>"Objects and Design",
+          :prereq=>["CS 1331", "CS 1372", "CS 1316"],
+          :openup=>["CS 2345", "CS 3240", "CS 3300", "CS 3312", "CS 3451", "CS 4240", "CS 4392", "CS 4470", "CS 4770", "CS 4911", "CS 4912"]
+        },
+        2345 => {
+          :course_title=>"Adv Practical O-O Prog",
+          :prereq=>["CS 2110", "CS 2261", "CS 2340"],
+          :openup=>[]
+        },
+        2600 => {
+          :course_title=>"Knowledge Rep & Process",
+          :prereq=>["CS 1301", "CS 1315", "CS 1371"],
+          :openup=>[]
+        },
+        2701 => {
+          :course_title=>"Startup Lab",
+          :prereq=>[],
+          :openup=>[]
+        },
+        3101 => {
+          :course_title=>"Comp Sci Ventures",
+          :prereq=>["CS 1301", "CS 1315", "CS 1371"],
+          :openup=>[]
+        },
+        3210 => {
+          :course_title=>"Design-Operating Systems",
+          :prereq=>["CS 2200"],
+          :openup=>["CS 4210", "CS 4233", "CS 4365"]
+        },
+        3220 => {
+          :course_title=>"Processor Design",
+          :prereq=>["CS 2200", "ECE 2031"],
+          :openup=>[]
+        },
+        3240 => {
+          :course_title=>"Languages and Computation",
+          :prereq=>["CS 2340"],
+          :openup=>[]
+        },
+        3251 => {
+          :course_title=>"Computer Networking I",
+          :prereq=>["CS 2200"],
+          :openup=>["CS 4237", "CS 4251", "CS 4255", "CS 4270"]
+        },
+        3300 => {
+          :course_title=>"Intro to Software Engr",
+          :prereq=>["CS 2340"],
+          :openup=>["CS 4320", "CS 4330", "CS 4342", "CS 4432"]
+        },
+        3311 => {
+          :course_title=>"Project Design",
+          :prereq=>["CS 2340", "LMC 3432"],
+          :openup=>[]
+        },
+        3312 => {
+          :course_title=>"Project Implementation",
+          :prereq=>["CS 2340", "LMC 3432", "LMC 3431"],
+          :openup=>[]
+        },
+        3451 => {
+          :course_title=>"Computer Graphics",
+          :prereq=>["MATH 2605", "2401", "2411", "24X1", "CS 2110", "2261", "CS 1332", "CS 2340"],
+          :openup=>["CS 4455", "CS 4480", "CS 4496", "CS 4550"]
+        },
+        3510 => {
+          :course_title=>"Dsgn&Analysis-Algorithms",
+          :prereq=>["CS 2050", "CS 2051", "MATH 3012", "CS 1332"],
+          :openup=>["CS 4510", "CS 4540", "CS 4560", "CS 4650"]
+        },
+        3511 => {
+          :course_title=>"Algorithms Honors",
+          :prereq=>["CS 2050", "CS 2051,MATH 3012", "CS 1332"],
+          :openup=>["CS 4510", "CS 4540"]
+        },
+        3600 => {
+          :course_title=>"Intro-Artificial Intell",
+          :prereq=>["CS 1332"],
+          :openup=>["CS 4611", "CS 4613", "CS 4615", "CS 4622", "CS 4635", "CS 4731"]
+        },
+        3630 => {
+          :course_title=>"Intro-Perception&Robotic",
+          :prereq=>["CS 1332"],
+          :openup=>["CS 4632"]
+        },
+        3651 => {
+          :course_title=>"Prototyping Intelligence Appl",
+          :prereq=>["ECE 2031"],
+          :openup=>[]
+        },
+        3743 => {
+          :course_title=>"Emerging Technologies",
+          :prereq=>[],
+          :openup=>[]
+        },
+        3750 => {
+          :course_title=>"User Interface Design",
+          :prereq=>[],
+          :openup=>[]
+        },
+        3790 => {
+          :course_title=>"Intro-Cognitive Science",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4001 => {
+          :course_title=>"Computing & Society",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4002 => {
+          :course_title=>"Robots and Society",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4005 => {
+          :course_title=>"Next Gen Computing Tech",
+          :prereq=>["CS 2316"],
+          :openup=>[]
+        },
+        4010 => {
+          :course_title=>"Intro to Computer Law",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4052 => {
+          :course_title=>"Systems Analysis & Design",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4057 => {
+          :course_title=>"Bus Process Analy/Design",
+          :prereq=>["MGT 2200"],
+          :openup=>[]
+        },
+        4210 => {
+          :course_title=>"Adv Operating Systems",
+          :prereq=>["CS 3210"],
+          :openup=>[]
+        },
+        4220 => {
+          :course_title=>"Embedded Systems",
+          :prereq=>["CS 2200"],
+          :openup=>[]
+        },
+        4233 => {
+          :course_title=>"Parallel Comp Arch",
+          :prereq=>["CS 3210"],
+          :openup=>[]
+        },
+        4235 => {
+          :course_title=>"Intro to Info Security",
+          :prereq=>["CS 2200"],
+          :openup=>[]
+        },
+        4237 => {
+          :course_title=>"Comp & Network Security",
+          :prereq=>["CS 3251"],
+          :openup=>[]
+        },
+        4240 => {
+          :course_title=>"Compilers & Interpreters",
+          :prereq=>["CS 2340"],
+          :openup=>[]
+        },
+        4245 => {
+          :course_title=>"Intro Data Mining & Anal",
+          :prereq=>["Math 2605", "2401", "2411", "24X1", "CS 1332", "CS 1372"],
+          :openup=>[]
+        },
+        4251 => {
+          :course_title=>"Computer Networking II",
+          :prereq=>["CS 3251"],
+          :openup=>[]
+        },
+        4255 => {
+          :course_title=>"Intro-Network Management",
+          :prereq=>["CS 3251"],
+          :openup=>[]
+        },
+        4260 => {
+          :course_title=>"Telecommunications Sys",
+          :prereq=>["MATH 3215", "MATH 3225", "MATH/ISYE/CEE 3770", "ISYE 2028", "CS 2200"],
+          :openup=>[]
+        },
+        4261 => {
+          :course_title=>"Mobile Apps & Svcs",
+          :prereq=>["CS 2200"],
+          :openup=>[]
+        },
+        4270 => {
+          :course_title=>"Data Communications Lab",
+          :prereq=>["CS 3251"],
+          :openup=>[]
+        },
+        4280 => {
+          :course_title=>"Survey-Telecom & the Law",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4290 => {
+          :course_title=>"Advanced Computer Org",
+          :prereq=>["CS 2200"],
+          :openup=>[]
+        },
+        4320 => {
+          :course_title=>"Software Processes",
+          :prereq=>["CS 3300"],
+          :openup=>[]
+        },
+        4330 => {
+          :course_title=>"Software Applications",
+          :prereq=>["CS 3300"],
+          :openup=>[]
+        },
+        4342 => {
+          :course_title=>"Software Generation",
+          :prereq=>["CS 3300"],
+          :openup=>[]
+        },
+        4365 => {
+          :course_title=>"Intro to Enterprise Computing",
+          :prereq=>["CS 3210", "CS 4400"],
+          :openup=>[]
+        },
+        4392 => {
+          :course_title=>"Programming Languages",
+          :prereq=>["CS 2340"],
+          :openup=>[]
+        },
+        4400 => {
+          :course_title=>"Intr to Database Systems",
+          :prereq=>["CS 1301", "CS 1371", "CS 1315"],
+          :openup=>["CS 4365", "CS 4420", "CS 4432", "CS 4440"]
+        },
+        4420 => {
+          :course_title=>"Database Sys Implement",
+          :prereq=>["CS 4400"],
+          :openup=>[]
+        },
+        4432 => {
+          :course_title=>"Information Systems Dsgn",
+          :prereq=>["CS 3300", "CS 4400"],
+          :openup=>[]
+        },
+        4440 => {
+          :course_title=>"Database Technologies",
+          :prereq=>["CS 4400"],
+          :openup=>[]
+        },
+        4452 => {
+          :course_title=>"Human-Centered Computing",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4455 => {
+          :course_title=>"Video Game Design",
+          :prereq=>["CS 3451"],
+          :openup=>[]
+        },
+        4460 => {
+          :course_title=>"Intro to Information Visualization",
+          :prereq=>["CS 1332"],
+          :openup=>[]
+        },
+        4464 => {
+          :course_title=>"Computational Journalism",
+          :prereq=>["CS 1331"],
+          :openup=>[]
+        },
+        4470 => {
+          :course_title=>"User Interface Software",
+          :prereq=>["CS 2340", "CS 3750/PSYC 3750"],
+          :openup=>[]
+        },
+        4472 => {
+          :course_title=>"Design of Online Communities",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4475 => {
+          :course_title=>"Computational Photography",
+          :prereq=>["CS 1301", "CS 1315", "CS 1371"],
+          :openup=>[]
+        },
+        4476 => {
+          :course_title=>"Intro to Computer Vision",
+          :prereq=>["MATH 2605", "2401", "24X1", "2411", "1553", "1554", "1564", "CS 2110", "CS 2261"],
+          :openup=>[]
+        },
+        4480 => {
+          :course_title=>"Digital Video Special FX",
+          :prereq=>["CS 3451"],
+          :openup=>[]
+        },
+        4495 => {
+          :course_title=>"Computer Vision",
+          :prereq=>["MATH 2605", "2401", "24X1", "2411", "CS 2110", "CS 2261"],
+          :openup=>[]
+        },
+        4496 => {
+          :course_title=>"Computer Animation",
+          :prereq=>["CS 3451"],
+          :openup=>[]
+        },
+        4510 => {
+          :course_title=>"Automata and Complexity",
+          :prereq=>["MATH 3012", "MATH 3215", "MATH 3670", "ISYE/CEE 3770", "ISYE 2027 with 2028", "CS 3510", "CS 3511"],
+          :openup=>[]
+        },
+        4520 => {
+          :course_title=>"Approximation Algs",
+          :prereq=>["CS 4540"],
+          :openup=>[]
+        },
+        4530 => {
+          :course_title=>"Randomized Algs",
+          :prereq=>["CS 4540"],
+          :openup=>[]
+        },
+        4540 => {
+          :course_title=>"Advanced Algs",
+          :prereq=>["MATH 3012", "MATH 3215", "MATH 3670", "ISYE/CEE 3770", "ISYE 2027 with 2028", "CS 3510", "CS 3511"],
+          :openup=>["CS 4520", "CS 4530"]
+        },
+        4550 => {
+          :course_title=>"Scientific Data Processing & Vis",
+          :prereq=>["CS 3451"],
+          :openup=>[]
+        },
+        4560 => {
+          :course_title=>"Verification of Systems",
+          :prereq=>["CS 2050", "CS 3510"],
+          :openup=>[]
+        },
+        4590 => {
+          :course_title=>"Principles & App of Comp Audio",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4605 => {
+          :course_title=>"Mobile and Ubiquitous Computing",
+          :prereq=>["CS 2110", "CS 2261"],
+          :openup=>[]
+        },
+        4611 => {
+          :course_title=>"AI Problem Solving",
+          :prereq=>["CS 3600"],
+          :openup=>[]
+        },
+        4613 => {
+          :course_title=>"Knowledge Systems Engr",
+          :prereq=>["CS 3600"],
+          :openup=>[]
+        },
+        4615 => {
+          :course_title=>"Knowledge Based Modeling & Des",
+          :prereq=>["CS 3600"],
+          :openup=>[]
+        },
+        4616 => {
+          :course_title=>"Pattern Recognition",
+          :prereq=>["CS 1331"],
+          :openup=>[]
+        },
+        4622 => {
+          :course_title=>"Case-Based Reasoning",
+          :prereq=>["CS 3600"],
+          :openup=>[]
+        },
+        4625 => {
+          :course_title=>"Intelligent & Interactive Systems",
+          :prereq=>["CS 1331"],
+          :openup=>[]
+        },
+        4632 => {
+          :course_title=>"Adv Intelligent Robotics",
+          :prereq=>["CS 3630"],
+          :openup=>[]
+        },
+        4635 => {
+          :course_title=>"Knowledge Based AI",
+          :prereq=>["CS 3600"],
+          :openup=>[]
+        },
+        4641 => {
+          :course_title=>"Machine Learning",
+          :prereq=>["CS 1331"],
+          :openup=>[]
+        },
+        4649 => {
+          :course_title=>"Robot Intelli Planning",
+          :prereq=>["CS 1332"],
+          :openup=>[]
+        },
+        4650 => {
+          :course_title=>"Natural Language",
+          :prereq=>["CS 3510"],
+          :openup=>[]
+        },
+        4660 => {
+          :course_title=>"Educational Technology",
+          :prereq=>[],
+          :openup=>["CS 4665", "CS 4670"]
+        },
+        4665 => {
+          :course_title=>"Educ Tech: Dsgn & Eval",
+          :prereq=>["CS 4660"],
+          :openup=>[]
+        },
+        4670 => {
+          :course_title=>"CSCL",
+          :prereq=>["CS 4660"],
+          :openup=>[]
+        },
+        4675 => {
+          :course_title=>"Internet Sys & Services",
+          :prereq=>["CS 2200"],
+          :openup=>[]
+        },
+        4685 => {
+          :course_title=>"Pervasive Systems & Networking",
+          :prereq=>["CS 2200"],
+          :openup=>[]
+        },
+        4690 => {
+          :course_title=>"Emperical Methods in HCI",
+          :prereq=>["CS/PSYC 3750"],
+          :openup=>[]
+        },
+        4710 => {
+          :course_title=>"CS for Bioinformatics",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4725 => {
+          :course_title=>"Info Security Policies",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4726 => {
+          :course_title=>"Privacy Tech Policy Law",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4731 => {
+          :course_title=>"Game AI",
+          :prereq=>["CS 3600"],
+          :openup=>[]
+        },
+        4741 => {
+          :course_title=>"Int Mgt Dev - Proj Prep",
+          :prereq=>[],
+          :openup=>["CS 4742"]
+        },
+        4742 => {
+          :course_title=>"Comp & Mgt Cap Proj",
+          :prereq=>["CS 4741"],
+          :openup=>[]
+        },
+        4752 => {
+          :course_title=>"Phil Issues-Computation",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4770 => {
+          :course_title=>"Mixed Reality Design",
+          :prereq=>["LCC 2700", "CS 2340"],
+          :openup=>[]
+        },
+        4791 => {
+          :course_title=>"Integrative Proj-Cog Sci",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4792 => {
+          :course_title=>"Dsgn Proj-Cognitive Sci",
+          :prereq=>[],
+          :openup=>[]
+        },
+        4793 => {
+          :course_title=>"Perspectives-Cog Science",
+          :prereq=>["CS/PST/PSYC/ISYE 3790"],
+          :openup=>[]
+        },
+        4911 => {
+          :course_title=>"Design Capstone Project",
+          :prereq=>["CS 2340"],
+          :openup=>[]
+        },
+        4912 => {
+          :course_title=>"Design Capstone Project",
+          :prereq=>["CS 2340"],
+          :openup=>[]
+        },
+        4140 => {
+          :course_title=>"Comp Model & Algorithms",
+          :prereq=>["CS 1331", "CS 1372", "CS 2316", "CX 4010", "ECE 2035", "ECE 2036"],
+          :openup=>[]
+        },
+        4230 => {
+          :course_title=>"Computer Simulation",
+          :prereq=>["MATH 3215/3225", "MATH 3670", "MATH/ISYE/CEE 3770", "ISYE 2028", "BMED 2400", "ECE 3077", "CS 1331", "CS 1372", "CS 2316", "CX 4010", "ECE 2035", "ECE 2036"],
+          :openup=>[]
+        },
+        4232 => {
+          :course_title=>"Sim & Military Gaming",
+          :prereq=>["CS 1331", "CS 1372", "CS 2316", "CX 4010", "ECE 2035", "ECE 2036"],
+          :openup=>[]
+        },
+        4236 => {
+          :course_title=>"Distributed Simulat Sys",
+          :prereq=>["CS 1331", "CS 1372", "CS 2316", "CX 4010", "ECE 2035", "ECE 2036"],
+          :openup=>[]
+        },
+        4242 => {
+          :course_title=>"Data & Visual Analystics",
+          :prereq=>["MATH 2605", "MATH 2401", "MATH 24X1", "MATH 2411", "MATH 3215/3225", "MATH 3670", "MATH/ISYE/CEE 3770", "ISYE 2028", "BMED 2400", "ECE 3770", "CS 1331", "CS 1372", "CS 2316", "CX 4010", "ECE 2035", "ECE 2036", "CX 4240"],
+          :openup=>[]
+        },
+        4640 => {
+          :course_title=>"Numerical Analysis I",
+          :prereq=>["MATH 2403", "MATH 2413", "MATH 24X3", "MATH 2602"],
+          :openup=>["CX 4641"]
+        },
+        4777 => {
+          :prereq=>["MATH 2605", "MATH 2401", "MATH 24X1", "MATH 2411"],
+          :openup=>[]
         }
-       ]
-      },
-      {
-       "name": "animate",
-       "children": [
-        {"name": "Easing", "size": 17010},
-        {"name": "FunctionSequence", "size": 5842},
-        {
-         "name": "interpolate",
-         "children": [
-          {"name": "ArrayInterpolator", "size": 1983},
-          {"name": "ColorInterpolator", "size": 2047},
-          {"name": "DateInterpolator", "size": 1375},
-          {"name": "Interpolator", "size": 8746},
-          {"name": "MatrixInterpolator", "size": 2202},
-          {"name": "NumberInterpolator", "size": 1382},
-          {"name": "ObjectInterpolator", "size": 1629},
-          {"name": "PointInterpolator", "size": 1675},
-          {"name": "RectangleInterpolator", "size": 2042}
-         ]
-        },
-        {"name": "ISchedulable", "size": 1041},
-        {"name": "Parallel", "size": 5176},
-        {"name": "Pause", "size": 449},
-        {"name": "Scheduler", "size": 5593},
-        {"name": "Sequence", "size": 5534},
-        {"name": "Transition", "size": 9201},
-        {"name": "Transitioner", "size": 19975},
-        {"name": "TransitionEvent", "size": 1116},
-        {"name": "Tween", "size": 6006}
-       ]
-      },
-      {
-       "name": "data",
-       "children": [
-        {
-         "name": "converters",
-         "children": [
-          {"name": "Converters", "size": 721},
-          {"name": "DelimitedTextConverter", "size": 4294},
-          {"name": "GraphMLConverter", "size": 9800},
-          {"name": "IDataConverter", "size": 1314},
-          {"name": "JSONConverter", "size": 2220}
-         ]
-        },
-        {"name": "DataField", "size": 1759},
-        {"name": "DataSchema", "size": 2165},
-        {"name": "DataSet", "size": 586},
-        {"name": "DataSource", "size": 3331},
-        {"name": "DataTable", "size": 772},
-        {"name": "DataUtil", "size": 3322}
-       ]
-      },
-      {
-       "name": "display",
-       "children": [
-        {"name": "DirtySprite", "size": 8833},
-        {"name": "LineSprite", "size": 1732},
-        {"name": "RectSprite", "size": 3623},
-        {"name": "TextSprite", "size": 10066}
-       ]
-      },
-      {
-       "name": "flex",
-       "children": [
-        {"name": "FlareVis", "size": 4116}
-       ]
-      },
-      {
-       "name": "physics",
-       "children": [
-        {"name": "DragForce", "size": 1082},
-        {"name": "GravityForce", "size": 1336},
-        {"name": "IForce", "size": 319},
-        {"name": "NBodyForce", "size": 10498},
-        {"name": "Particle", "size": 2822},
-        {"name": "Simulation", "size": 9983},
-        {"name": "Spring", "size": 2213},
-        {"name": "SpringForce", "size": 1681}
-       ]
-      },
-      {
-       "name": "query",
-       "children": [
-        {"name": "AggregateExpression", "size": 1616},
-        {"name": "And", "size": 1027},
-        {"name": "Arithmetic", "size": 3891},
-        {"name": "Average", "size": 891},
-        {"name": "BinaryExpression", "size": 2893},
-        {"name": "Comparison", "size": 5103},
-        {"name": "CompositeExpression", "size": 3677},
-        {"name": "Count", "size": 781},
-        {"name": "DateUtil", "size": 4141},
-        {"name": "Distinct", "size": 933},
-        {"name": "Expression", "size": 5130},
-        {"name": "ExpressionIterator", "size": 3617},
-        {"name": "Fn", "size": 3240},
-        {"name": "If", "size": 2732},
-        {"name": "IsA", "size": 2039},
-        {"name": "Literal", "size": 1214},
-        {"name": "Match", "size": 3748},
-        {"name": "Maximum", "size": 843},
-        {
-         "name": "methods",
-         "children": [
-          {"name": "add", "size": 593},
-          {"name": "and", "size": 330},
-          {"name": "average", "size": 287},
-          {"name": "count", "size": 277},
-          {"name": "distinct", "size": 292},
-          {"name": "div", "size": 595},
-          {"name": "eq", "size": 594},
-          {"name": "fn", "size": 460},
-          {"name": "gt", "size": 603},
-          {"name": "gte", "size": 625},
-          {"name": "iff", "size": 748},
-          {"name": "isa", "size": 461},
-          {"name": "lt", "size": 597},
-          {"name": "lte", "size": 619},
-          {"name": "max", "size": 283},
-          {"name": "min", "size": 283},
-          {"name": "mod", "size": 591},
-          {"name": "mul", "size": 603},
-          {"name": "neq", "size": 599},
-          {"name": "not", "size": 386},
-          {"name": "or", "size": 323},
-          {"name": "orderby", "size": 307},
-          {"name": "range", "size": 772},
-          {"name": "select", "size": 296},
-          {"name": "stddev", "size": 363},
-          {"name": "sub", "size": 600},
-          {"name": "sum", "size": 280},
-          {"name": "update", "size": 307},
-          {"name": "variance", "size": 335},
-          {"name": "where", "size": 299},
-          {"name": "xor", "size": 354},
-          {"name": "_", "size": 264}
-         ]
-        },
-        {"name": "Minimum", "size": 843},
-        {"name": "Not", "size": 1554},
-        {"name": "Or", "size": 970},
-        {"name": "Query", "size": 13896},
-        {"name": "Range", "size": 1594},
-        {"name": "StringUtil", "size": 4130},
-        {"name": "Sum", "size": 791},
-        {"name": "Variable", "size": 1124},
-        {"name": "Variance", "size": 1876},
-        {"name": "Xor", "size": 1101}
-       ]
-      },
-      {
-       "name": "scale",
-       "children": [
-        {"name": "IScaleMap", "size": 2105},
-        {"name": "LinearScale", "size": 1316},
-        {"name": "LogScale", "size": 3151},
-        {"name": "OrdinalScale", "size": 3770},
-        {"name": "QuantileScale", "size": 2435},
-        {"name": "QuantitativeScale", "size": 4839},
-        {"name": "RootScale", "size": 1756},
-        {"name": "Scale", "size": 4268},
-        {"name": "ScaleType", "size": 1821},
-        {"name": "TimeScale", "size": 5833}
-       ]
-      },
-      {
-       "name": "util",
-       "children": [
-        {"name": "Arrays", "size": 8258},
-        {"name": "Colors", "size": 10001},
-        {"name": "Dates", "size": 8217},
-        {"name": "Displays", "size": 12555},
-        {"name": "Filter", "size": 2324},
-        {"name": "Geometry", "size": 10993},
-        {
-         "name": "heap",
-         "children": [
-          {"name": "FibonacciHeap", "size": 9354},
-          {"name": "HeapNode", "size": 1233}
-         ]
-        },
-        {"name": "IEvaluable", "size": 335},
-        {"name": "IPredicate", "size": 383},
-        {"name": "IValueProxy", "size": 874},
-        {
-         "name": "math",
-         "children": [
-          {"name": "DenseMatrix", "size": 3165},
-          {"name": "IMatrix", "size": 2815},
-          {"name": "SparseMatrix", "size": 3366}
-         ]
-        },
-        {"name": "Maths", "size": 17705},
-        {"name": "Orientation", "size": 1486},
-        {
-         "name": "palette",
-         "children": [
-          {"name": "ColorPalette", "size": 6367},
-          {"name": "Palette", "size": 1229},
-          {"name": "ShapePalette", "size": 2059},
-          {"name": "SizePalette", "size": 2291}
-         ]
-        },
-        {"name": "Property", "size": 5559},
-        {"name": "Shapes", "size": 19118},
-        {"name": "Sort", "size": 6887},
-        {"name": "Stats", "size": 6557},
-        {"name": "Strings", "size": 22026}
-       ]
-      },
-      {
-       "name": "vis",
-       "children": [
-        {
-         "name": "axis",
-         "children": [
-          {"name": "Axes", "size": 1302},
-          {"name": "Axis", "size": 24593},
-          {"name": "AxisGridLine", "size": 652},
-          {"name": "AxisLabel", "size": 636},
-          {"name": "CartesianAxes", "size": 6703}
-         ]
-        },
-        {
-         "name": "controls",
-         "children": [
-          {"name": "AnchorControl", "size": 2138},
-          {"name": "ClickControl", "size": 3824},
-          {"name": "Control", "size": 1353},
-          {"name": "ControlList", "size": 4665},
-          {"name": "DragControl", "size": 2649},
-          {"name": "ExpandControl", "size": 2832},
-          {"name": "HoverControl", "size": 4896},
-          {"name": "IControl", "size": 763},
-          {"name": "PanZoomControl", "size": 5222},
-          {"name": "SelectionControl", "size": 7862},
-          {"name": "TooltipControl", "size": 8435}
-         ]
-        },
-        {
-         "name": "data",
-         "children": [
-          {"name": "Data", "size": 20544},
-          {"name": "DataList", "size": 19788},
-          {"name": "DataSprite", "size": 10349},
-          {"name": "EdgeSprite", "size": 3301},
-          {"name": "NodeSprite", "size": 19382},
-          {
-           "name": "render",
-           "children": [
-            {"name": "ArrowType", "size": 698},
-            {"name": "EdgeRenderer", "size": 5569},
-            {"name": "IRenderer", "size": 353},
-            {"name": "ShapeRenderer", "size": 2247}
-           ]
-          },
-          {"name": "ScaleBinding", "size": 11275},
-          {"name": "Tree", "size": 7147},
-          {"name": "TreeBuilder", "size": 9930}
-         ]
-        },
-        {
-         "name": "events",
-         "children": [
-          {"name": "DataEvent", "size": 2313},
-          {"name": "SelectionEvent", "size": 1880},
-          {"name": "TooltipEvent", "size": 1701},
-          {"name": "VisualizationEvent", "size": 1117}
-         ]
-        },
-        {
-         "name": "legend",
-         "children": [
-          {"name": "Legend", "size": 20859},
-          {"name": "LegendItem", "size": 4614},
-          {"name": "LegendRange", "size": 10530}
-         ]
-        },
-        {
-         "name": "operator",
-         "children": [
-          {
-           "name": "distortion",
-           "children": [
-            {"name": "BifocalDistortion", "size": 4461},
-            {"name": "Distortion", "size": 6314},
-            {"name": "FisheyeDistortion", "size": 3444}
-           ]
-          },
-          {
-           "name": "encoder",
-           "children": [
-            {"name": "ColorEncoder", "size": 3179},
-            {"name": "Encoder", "size": 4060},
-            {"name": "PropertyEncoder", "size": 4138},
-            {"name": "ShapeEncoder", "size": 1690},
-            {"name": "SizeEncoder", "size": 1830}
-           ]
-          },
-          {
-           "name": "filter",
-           "children": [
-            {"name": "FisheyeTreeFilter", "size": 5219},
-            {"name": "GraphDistanceFilter", "size": 3165},
-            {"name": "VisibilityFilter", "size": 3509}
-           ]
-          },
-          {"name": "IOperator", "size": 1286},
-          {
-           "name": "label",
-           "children": [
-            {"name": "Labeler", "size": 9956},
-            {"name": "RadialLabeler", "size": 3899},
-            {"name": "StackedAreaLabeler", "size": 3202}
-           ]
-          },
-          {
-           "name": "layout",
-           "children": [
-            {"name": "AxisLayout", "size": 6725},
-            {"name": "BundledEdgeRouter", "size": 3727},
-            {"name": "CircleLayout", "size": 9317},
-            {"name": "CirclePackingLayout", "size": 12003},
-            {"name": "DendrogramLayout", "size": 4853},
-            {"name": "ForceDirectedLayout", "size": 8411},
-            {"name": "IcicleTreeLayout", "size": 4864},
-            {"name": "IndentedTreeLayout", "size": 3174},
-            {"name": "Layout", "size": 7881},
-            {"name": "NodeLinkTreeLayout", "size": 12870},
-            {"name": "PieLayout", "size": 2728},
-            {"name": "RadialTreeLayout", "size": 12348},
-            {"name": "RandomLayout", "size": 870},
-            {"name": "StackedAreaLayout", "size": 9121},
-            {"name": "TreeMapLayout", "size": 9191}
-           ]
-          },
-          {"name": "Operator", "size": 2490},
-          {"name": "OperatorList", "size": 5248},
-          {"name": "OperatorSequence", "size": 4190},
-          {"name": "OperatorSwitch", "size": 2581},
-          {"name": "SortOperator", "size": 2023}
-         ]
-        },
-        {"name": "Visualization", "size": 16540}
-       ]
       }
-     ]
     }
   end
+
 end
