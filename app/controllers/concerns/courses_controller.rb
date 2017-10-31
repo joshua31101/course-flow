@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
     course_num = course_info[1]
 
     if major.present? && course_num.present?
-      _course_info = JsonHelper.courses[major][course_num]
+      _course_info = JsonHelper.courses[major.to_sym][course_num.to_sym]
       json_prereq_courses = {
         name: course_name,
         desc: _course_info.present? ? _course_info[:course_title] : '',
@@ -40,8 +40,8 @@ class CoursesController < ApplicationController
       }
     end
 
-    if JsonHelper.courses[major][course_num] && JsonHelper.courses[major][course_num][:prereq]
-      JsonHelper.courses[major][course_num][:prereq].each do |prereq_course|
+    if JsonHelper.courses[major.to_sym][course_num.to_sym] && JsonHelper.courses[major.to_sym][course_num.to_sym][:prereq]
+      JsonHelper.courses[major.to_sym][course_num.to_sym][:prereq].each do |prereq_course|
         if prereq_course != ' '
           json_prereq_courses[:children] << get_user_course_prereqs(prereq_course)
         end
