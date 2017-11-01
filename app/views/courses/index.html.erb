@@ -13,6 +13,7 @@
 
 
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script>
   var margin = {top: 30, right: 120, bottom: 20, left: 120},
       width = 960 - margin.right - margin.left,
@@ -20,18 +21,27 @@
   var i = 0,
       duration = 750,
       root = {}
-      courses = {};
   var tree = d3.layout.tree()
       .size([height, width]);
   var diagonal = d3.svg.diagonal();
-      // .projection(function(d) { return [d.y, d.x]; });
   var svg = d3.select(".courses-container").append("svg")
       .attr("width", width + margin.right + margin.left)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  // Tooltip
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<span>" + d.course_desc + "</span>" +
+             "<p class='text-right'>Credit hours: " + d.course_credit_hour + "</p>";
+    });
+  svg.call(tip);
+
   d3.select(self.frameElement).style("height", "800px");
+
   function update(source) {
     if (source.children && source.children.length >= 12) {
       // svg.style('height', 1000)
@@ -50,7 +60,9 @@
     var nodeEnter = node.enter().append("g")
         .attr("class", "node")
         .attr("transform", function(d) { return "translate(" + source.x0 + "," + source.y0 + ")"; })
-        .on("click", click);
+        .on("click", click)
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
     nodeEnter.append('foreignObject')
         .attr("width", function(d) { return d.course_name.length * 6.5 })
         .attr("height", 45)

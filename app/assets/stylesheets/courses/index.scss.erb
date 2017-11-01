@@ -6,7 +6,7 @@ body {
 }
 
 .courses-container {
-  background: white;
+  text-align: center;
 }
 
 .title {
@@ -130,4 +130,38 @@ input::placeholder {
   border: 2px solid #ccc;
   border-top-color: #333;
   animation: spinner .6s linear infinite;
+}
+
+/* Tooltip */
+.d3-tip {
+  border: 1px solid #335170;
+  padding: 15px;
+  max-width: 280px;
+  color: #fff;
+  border-radius: 2px;
+  background-color: #fff;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #335170;
+  p {
+    margin: 5px 0 0;
+  }
+}
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }
