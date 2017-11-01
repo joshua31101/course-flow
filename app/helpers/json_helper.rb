@@ -1065,7 +1065,6 @@ module JsonHelper
       "number": "4375",
       "title": "Fundamentals of Computer-Aided Engineering and Design",
       "prereq": [
-        "CS 1321",
         "MATH 2403",
         "MATH 2413",
         "MATH 24X3"
@@ -2030,7 +2029,6 @@ module JsonHelper
       "number": "6361",
       "title": "Air Breathing Propulsion System Design I",
       "prereq": [
-        "CS 1321"
       ],
       "openup": [
 
@@ -2099,7 +2097,6 @@ module JsonHelper
       "number": "6380",
       "title": "Fundamentals of Computer-aided Design and Engineering",
       "prereq": [
-        "CS 1321",
         "MATH 2403",
         "MATH 2413",
         "MATH 24X3"
@@ -2114,7 +2111,6 @@ module JsonHelper
       "number": "6381",
       "title": "Software Development for Engineering Applications",
       "prereq": [
-        "CS 1321"
       ],
       "openup": [
 
@@ -9434,7 +9430,6 @@ module JsonHelper
       "prereq": [
         "BIOL 2344",
         "BIOL 2354",
-        "CS 1321",
         "CS 1371",
         "CS 1301",
         "CS 1315"
@@ -26124,7 +26119,7 @@ module JsonHelper
         "LMC 2700",
         "LMC 3710"
       ],
-      "desc": "Modeling the structure of media (e.g., music, graphical scenes) using dynamic data structures. Designing objects as encapsulations of structure and behavior. Algorithms for simulating objects. May not be taken for credit by students who have credit for CS 1322.",
+      "desc": "Modeling the structure of media (e.g., music, graphical scenes) using dynamic data structures. Designing objects as encapsulations of structure and behavior. Algorithms for simulating objects.",
       "credit_hour": "3"
     },
     "1331": {
@@ -26133,7 +26128,6 @@ module JsonHelper
       "prereq": [
         "CS 1301",
         "CS 1315",
-        "CS 1321",
         "CS 1371"
       ],
       "openup": [
@@ -26161,9 +26155,8 @@ module JsonHelper
     },
     "1332": {
       "number": "1332",
-      "title": "Data Structures and Algorithms for Applications",
+      "title": "Data Structures and Algorithms",
       "prereq": [
-        "CS 1322",
         "CS 1331"
       ],
       "openup": [
@@ -47079,7 +47072,6 @@ module JsonHelper
       "number": "2128",
       "title": "Honors Statistics",
       "prereq": [
-        "CS 1322",
         "ISYE 2027"
       ],
       "openup": [
@@ -47353,7 +47345,6 @@ module JsonHelper
       "title": "Design of Human-Integrated Systems",
       "prereq": [
         "ISYE 2028",
-        "CS 1322"
       ],
       "openup": [
         "ISYE 6215",
@@ -47461,7 +47452,6 @@ module JsonHelper
       "number": "4331",
       "title": "Honors Optimization",
       "prereq": [
-        "CS 1322",
         "MATH 2602"
       ],
       "openup": [
@@ -48248,7 +48238,6 @@ module JsonHelper
       "number": "6645",
       "title": "Monte Carlo Methods",
       "prereq": [
-        "CS 1322",
         "ISYE 2027",
         "ISYE 2028",
         "ISYE 3232"
@@ -53706,7 +53695,6 @@ module JsonHelper
         "CS 1315",
         "CS 1316",
         "CS 1301",
-        "CS 1321",
         "CS 1371"
       ],
       "openup": [
@@ -54638,7 +54626,6 @@ module JsonHelper
       "prereq": [
         "CS 1301",
         "CS 1315",
-        "CS 1321",
         "CS 1371",
         "LCC 2100",
         "LCC 2700",
@@ -54658,7 +54645,6 @@ module JsonHelper
         "CS 1301",
         "CS 1315",
         "CS 1316",
-        "CS 1321",
         "CS 1371",
         "LCC 2100",
         "LCC 2700",
@@ -54948,7 +54934,6 @@ module JsonHelper
       "number": "4720",
       "title": "Interactive Narrative",
       "prereq": [
-        "CS 1322",
         "CS 1331",
         "LCC 2100",
         "LCC 2700",
@@ -54965,7 +54950,6 @@ module JsonHelper
       "number": "4725",
       "title": "Games Design as a Cultural Practice",
       "prereq": [
-        "CS 1322",
         "CS 1331",
         "LCC 2100",
         "LCC 2700",
@@ -54982,7 +54966,6 @@ module JsonHelper
       "number": "4730",
       "title": "Experimental Digital Art",
       "prereq": [
-        "CS 1322",
         "CS 1331",
         "LCC 2100",
         "LCC 2700",
@@ -56308,8 +56291,6 @@ module JsonHelper
       "title": "Business Programming",
       "prereq": [
         "MGT 2200",
-        "CS 1321",
-        "CS 1322",
         "CS 1371"
       ],
       "openup": [

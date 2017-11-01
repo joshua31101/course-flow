@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
     if params[:course_name].present?
       major = params[:course_name].split(' ')[0].upcase
       course_number = params[:course_name].split(' ')[1]
-      render json: get_user_course_prereqs("#{major} #{course_number}"), status: :ok
+      render json: get_user_course_prereqs("#{major} #{course_number}", nil), status: :ok
     else
       render json: 'Opps.. we couldn\'t find a course. Try typing something like CS 3510', status: :forbidden
     end
@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
 
   # @param course_name String - 'major course_number' ex) 'CS 1301'
   # @return course_prereqs Hash - course root parent
-  def get_user_course_prereqs(course_name)
+  def get_user_course_prereqs(course_name, openup)
     if course_name.blank?
       return nil
     end
@@ -33,17 +33,25 @@ class CoursesController < ApplicationController
 
     if major.present? && course_num.present?
       _course_info = JsonHelper.courses[major.to_sym][course_num.to_sym]
-      json_prereq_courses = {
-        name: course_name,
-        desc: _course_info.present? ? _course_info[:course_title] : '',
-        children: []
-      }
+      if _course_info
+        json_prereq_courses = {
+          course_name: course_name,
+          course_title: _course_info[:title],
+          course_desc: _course_info[:desc],
+          course_credit_hour: _course_info[:credit_hour],
+          children: [],
+          openup: openup
+        }
+      else
+        # Return if invalid course
+        return nil
+      end
     end
 
     if JsonHelper.courses[major.to_sym][course_num.to_sym] && JsonHelper.courses[major.to_sym][course_num.to_sym][:prereq]
       JsonHelper.courses[major.to_sym][course_num.to_sym][:prereq].each do |prereq_course|
         if prereq_course != ' '
-          json_prereq_courses[:children] << get_user_course_prereqs(prereq_course)
+          json_prereq_courses[:children] << get_user_course_prereqs(prereq_course, course_name)
         end
       end
     else
