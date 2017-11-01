@@ -154,8 +154,9 @@
       // Add spinner
       $('.courses-container').append('<div class="spinner"></div>');
       d3.json('prereq_courses?' + $('form').serialize(), function(error, flare) {
-        if (error) {
-          $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
+        if (error || !flare) {
+          $('.search_form').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
+          $('.courses-container .spinner').remove();
           throw error;
         };
         root = flare;
@@ -177,7 +178,7 @@
         update(root);
       });
     } else {
-      $('.courses-container').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
+      $('.search_form').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
     }
   }
   $(document).ready(function() {
