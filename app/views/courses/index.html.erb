@@ -35,8 +35,9 @@
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
-      return "<span>" + d.course_desc + "</span>" +
-             "<p class='text-right'>Credit hours: " + d.course_credit_hour + "</p>";
+      return  "<h3>" + d.course_title + "</h3>" +
+              "<p>" + d.course_desc + "</p>" +
+              "<p class='text-right'>Credit hours: " + d.course_credit_hour + "</p>";
     });
   svg.call(tip);
 
@@ -78,12 +79,12 @@
           return (d.children || d._children).length > 0 ? d.course_name + " *" : d.course_name;
         })
     // Course title
-    nodeEnter.append("text")
-        .attr("x", function(d) { return "-" + d.course_title.length * 6.5 / 2 + "px"; })
-        .attr("y", "1.7em")
-        .attr("text-anchor", function(d) { return "start"; })
-        .style("font-size", "14px")
-        .text(function(d) { return d.course_title });
+    // nodeEnter.append("text")
+    //     .attr("x", function(d) { return "-" + d.course_title.length * 6.5 / 2 + "px"; })
+    //     .attr("y", "1.7em")
+    //     .attr("text-anchor", function(d) { return "start"; })
+    //     .style("font-size", "14px")
+    //     .text(function(d) { return d.course_title });
     // Transition nodes to their new position.
     var nodeUpdate = node.transition()
         .duration(duration)
