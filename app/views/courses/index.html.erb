@@ -15,6 +15,21 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script>
+  $(document).ready(function() {
+    $('#course_input').keypress(function (e) {
+     var key = e.which;
+     // Check if a user hits enter
+     if (key == 13) {
+       makeGraph();
+       return false;
+      }
+    });
+    $('.search_button').click(function(ev) {
+      ev.preventDefault();
+      makeGraph();
+    });
+  });
+
   var margin = {top: 30, right: 120, bottom: 20, left: 120},
       width = 960 - margin.right - margin.left,
       height = 800 - margin.top - margin.bottom;
@@ -154,7 +169,7 @@
     if (validateInput($('#course_input').val())) {
       // Add spinner
       $('.courses-container').append('<div class="spinner"></div>');
-      d3.json('prereq_courses?' + $('form').serialize(), function(error, flare) {
+      d3.json('prereq-courses?' + $('form').serialize(), function(error, flare) {
         if (error || !flare) {
           $('.search_form').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
           $('.courses-container .spinner').remove();
@@ -182,18 +197,4 @@
       $('.search_form').append('<p class="error text-center">Opps.. we couldn\'t find a course. Try typing something like CS 3510</p>');
     }
   }
-  $(document).ready(function() {
-    $('#course_input').keypress(function (e) {
-     var key = e.which;
-     // Check if a user hits enter
-     if (key == 13) {
-       makeGraph();
-       return false;
-      }
-    });
-    $('.search_form button').click(function(ev) {
-      ev.preventDefault();
-      makeGraph();
-    });
-  });
 </script>
