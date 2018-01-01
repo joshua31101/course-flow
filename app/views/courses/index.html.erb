@@ -6,7 +6,9 @@
       <input id="course_input" class="form-control" type="text" name="course_name" placeholder="Search course numbers">
     </form>
     <button type="button" class="btn btn-raised btn-success search_button">Search</button>
-    <div class="legend text-right">* - means course has prerequisites</div>
+    <div class="legend text-right">
+      <p>* - means course has prerequisites.</p>
+    </div>
   </div>
 </div>
 
@@ -30,6 +32,8 @@
     });
   });
 
+  // Course and/or relationship
+  var relationship = '';
   var margin = {top: 30, right: 120, bottom: 20, left: 120},
       width = 960 - margin.right - margin.left,
       height = 800 - margin.top - margin.bottom;
@@ -59,19 +63,38 @@
   d3.select(self.frameElement).style("height", "800px");
 
   function update(source) {
+    var children = (source.children || source._children).slice();
+    for (var i = 0; i < children.length; i++) {
+      if (children[i].course_name === undefined) {
+        var rel = children[i].relationship
+        var _children = children[i]._children;
+        if (_children) {
+          _children[0]['start_nested'] = true;
+          _children[_children.length - 1]['end_nested'] = true;
+        }
+        for (var j = 0; j < _children.length; j++) {
+          _children[j]['nested_rel'] = rel;
+          (source.children || source._children).push(_children[j]);
+        }
+        (source.children || source._children).shift();
+      }
+    }
+
     if (source.children && source.children.length >= 12) {
       // svg.style('height', 1000)
       // TODO: dynamically update height of svg
     }
-
     // Compute the new tree layout.
     var nodes = tree.nodes(root).reverse(),
         links = tree.links(nodes);
-    // Normalize for fixed-depth.
-    nodes.forEach(function(d) { d.y = d.depth * 180; });
     // Update the nodes…
     var node = svg.selectAll("g.node")
         .data(nodes, function(d) { return d.id || (d.id = ++i); });
+    // Normalize for fixed-depth.
+    nodes.forEach(function(d) {
+      d.y = d.depth * 180;
+    });
+
     // Enter any new nodes at the parent's previous position.
     var nodeEnter = node.enter().append("g")
         .attr("class", "node")
@@ -80,19 +103,57 @@
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
     nodeEnter.append('foreignObject')
-        .attr("width", function(d) { return d.course_name.length * 6.5 })
-        .attr("height", 45)
-        .attr("x", function(d) { return "-" + d.course_name.length * 6.5 / 2 + "px"; })
-        .attr("y", "-1em")
+        .attr("width", function(d) {
+          return (d.course_name || d.relationship).length * 12;
+        })
+        .attr("height", 30)
+        .attr("x", function(d) {
+          return "-" + (d.course_name || d.relationship).length * 11 / 2 + "px";
+        })
+        .attr("y", "-15px")
         .style("background", "white");
     // Course number
     nodeEnter.append("text")
-        .attr("x", "2em")
+        .attr("x", function(d) {
+          return d.course_name.length > 8 ? "3.5em" : "1.5em";
+        })
         .attr("y", ".35em")
         .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
         .text(function(d) {
-          return (d.children || d._children).length > 0 ? d.course_name + " *" : d.course_name;
+          var children = d.children || d._children;
+          if (d.course_name) {
+            var course_name = children && children.length > 0 ? "*" + d.course_name : d.course_name;
+            if (d.end_nested) {
+              course_name += ")";
+            } else if (d.start_nested) {
+              course_name = "(" + course_name;
+            }
+            return course_name;
+          }
+        });
+
+    var sibilingCount = (source.children && source.children.length - 1) || 0;
+    if (sibilingCount > 0 && source.relationship) {
+      var lastChild = source.children[sibilingCount];
+      var rightMargin = (lastChild.x - source.children[0].x) / (sibilingCount * 2);
+      var childDepth = lastChild.depth;
+      // OR text
+      nodeEnter.append("text")
+        .attr("x", function(d) {
+          return d.course_name.length > 8 ? (rightMargin + 20) + "px" : rightMargin + "px";
         })
+        .attr("y", ".35em")
+        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+        .text(function(d) {
+          if (d === lastChild || d.depth !== childDepth) {
+            return '';
+          }
+          if (d.end_nested) {
+            return d.parent.relationship;
+          }
+          return d.nested_rel ? d.nested_rel : d.parent.relationship;
+        });
+    }
     // Course title
     // nodeEnter.append("text")
     //     .attr("x", function(d) { return "-" + d.course_title.length * 6.5 / 2 + "px"; })
@@ -101,6 +162,7 @@
     //     .style("font-size", "14px")
     //     .text(function(d) { return d.course_title });
     // Transition nodes to their new position.
+
     var nodeUpdate = node.transition()
         .duration(duration)
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
